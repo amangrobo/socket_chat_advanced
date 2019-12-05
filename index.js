@@ -74,10 +74,9 @@ app.post('/file-upload', upload.single('avatar'), function (req, res, next) {
 });
 
 // Listen application request on port OPENSHIFT_NODEJS_PORT OR 8080
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0'
+var port = process.env.PORT || 3000;
  
-http.listen(server_port, server_ip_address, function () {
+http.listen(port, function () {
   console.log( "Listening on " + server_ip_address + ", port " + server_port )
   setInterval(function () {
     exec("rm -rf assets/uploads/* \;");
